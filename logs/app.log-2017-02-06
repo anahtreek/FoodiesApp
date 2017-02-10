@@ -1,0 +1,7 @@
+[06 02 2017 10:07:36.723] [DEBUG] - Mongoose is now connected to  mongodb://127.0.0.1:27017/trial
+[06 02 2017 10:09:41.955] [DEBUG] - Inside user post
+[06 02 2017 10:11:58.722] [DEBUG] - Mongoose is now connected to  mongodb://127.0.0.1:27017/trial
+[06 02 2017 10:12:07.484] [DEBUG] - Inside user post
+[06 02 2017 10:27:16.831] [DEBUG] - Mongoose is now connected to  mongodb://127.0.0.1:27017/trial
+[06 02 2017 10:57:06.667] [DEBUG] - Mongoose is now disconnected..!
+[06 02 2017 11:59:44.402] [DEBUG] - Mongoose is now connected to  mongodb://127.0.0.1:27017/trial

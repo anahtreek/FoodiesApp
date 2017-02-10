@@ -1,0 +1,31 @@
+[03 02 2017 05:00:48.331] [DEBUG] - Mongoose is now connected to  mongodb://127.0.0.1:27017/trial
+[03 02 2017 05:00:49.293] [DEBUG] - Received request{"userName":"ash","password":"password"}
+[03 02 2017 05:08:30.137] [DEBUG] - Received request{"userName":"aswini","password":"password"}
+[03 02 2017 05:08:44.742] [DEBUG] - Received request{"userName":"hari","password":"password"}
+[03 02 2017 05:08:55.379] [DEBUG] - Mongoose is now disconnected..!
+[03 02 2017 05:30:22.752] [DEBUG] - Mongoose is now connected to  mongodb://127.0.0.1:27017/trial
+[03 02 2017 05:30:26.813] [DEBUG] - Received request{"userName":"hari","password":"hari"}
+[03 02 2017 05:39:19.485] [DEBUG] - Mongoose is now disconnected..!
+[03 02 2017 05:40:11.646] [DEBUG] - Mongoose is now connected to  mongodb://127.0.0.1:27017/trial
+[03 02 2017 05:40:17.268] [DEBUG] - Received request{"userName":"hari","password":"hari"}
+[03 02 2017 05:40:24.802] [DEBUG] - Mongoose is now disconnected..!
+[03 02 2017 05:49:03.016] [DEBUG] - Mongoose is now connected to  mongodb://127.0.0.1:27017/trial
+[03 02 2017 05:49:04.493] [DEBUG] - Received request{"userName":"hari","password":"hari"}
+[03 02 2017 05:49:15.357] [DEBUG] - Mongoose is now disconnected..!
+[03 02 2017 05:53:51.588] [DEBUG] - Mongoose is now connected to  mongodb://127.0.0.1:27017/trial
+[03 02 2017 05:56:15.862] [DEBUG] - Received request{"userName":"hari","password":"hari"}
+[03 02 2017 06:16:45.029] [DEBUG] - Mongoose is now disconnected..!
+[03 02 2017 06:16:56.210] [DEBUG] - Mongoose is now connected to  mongodb://127.0.0.1:27017/trial
+[03 02 2017 06:17:22.451] [DEBUG] - Received request{"userName":"hari","password":"hari"}
+[03 02 2017 06:25:04.372] [DEBUG] - Mongoose is now disconnected..!
+[03 02 2017 06:25:13.810] [DEBUG] - Mongoose is now connected to  mongodb://127.0.0.1:27017/trial
+[03 02 2017 06:25:19.605] [DEBUG] - Received request{"userName":"hari","password":"hari"}
+[03 02 2017 06:41:05.498] [DEBUG] - Mongoose is now disconnected..!
+[03 02 2017 06:41:15.881] [DEBUG] - Mongoose is now connected to  mongodb://127.0.0.1:27017/trial
+[03 02 2017 06:41:18.394] [DEBUG] - Received request{"userName":"hari","password":"hari"}
+[03 02 2017 06:45:55.394] [DEBUG] - Mongoose is now disconnected..!
+[03 02 2017 06:46:04.033] [DEBUG] - Mongoose is now connected to  mongodb://127.0.0.1:27017/trial
+[03 02 2017 06:54:16.648] [DEBUG] - Mongoose is now disconnected..!
+[03 02 2017 06:54:25.541] [DEBUG] - Mongoose is now connected to  mongodb://127.0.0.1:27017/trial
+[03 02 2017 06:59:12.961] [DEBUG] - Received request{"userName":"hari","password":"hari"}
+[03 02 2017 07:08:53.631] [DEBUG] - Mongoose is now disconnected..!
