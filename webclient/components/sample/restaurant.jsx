@@ -1,9 +1,9 @@
 import React from 'react';
-import { Card, Icon, Image} from 'semantic-ui-react';
+import { Card, Icon, Image, Input} from 'semantic-ui-react';
 import Button from './button.jsx'
 
 var cardStyle = {
-  height: '450px',
+  height: '470px',
   margin: '10px 10px 0 0'
 }
 
@@ -30,8 +30,8 @@ class RestaurantComponent extends React.Component {
   // if(page === 'search') {
   //   buttonSet = <Button {this.props.bable} color = {this.props.bcolor} icon = {this.props.bicon}>{this.props.bvalue}</Button>
   // }
-  trigger(id, img, name, address, cuisines, rating) {
-    this.props.trigger(this.props.id, this.props.img, this.props.name, this.props.address, this.props.cuisines, this.props.rating)
+  trigger() {
+    this.props.trigger(this.props.id, this.props.img, this.props.name, this.props.address, this.props.cuisines, this.props.rating, this.props.page);
   }
 
 	render () {
@@ -45,13 +45,13 @@ class RestaurantComponent extends React.Component {
     var trigger = this.trigger.bind(this);
 
     var bttn = '';
+    var commentBox = '';
     if(page === 'search') {
-      console.log(bvalue+'y')
-      bttn = <Button bvalue= {bvalue} bcolor = {bcolor} bicon = {bicon} trigger = {trigger}></Button>
+      bttn = <Button bvalue = {bvalue} bcolor = {bcolor} bicon = {bicon} trigger = {trigger}></Button>
     }
     else if(page === 'favourites') {
-      console.log(bvalue+'y')
-      bttn = <Button bvalue= 'Delete' bcolor = {bcolor} bicon = {bicon} trigger = {trigger}></Button>
+      bttn = <Button bvalue = 'Delete' bcolor = 'red' bicon = 'delete' trigger = {trigger}></Button>
+      commentBox = <Input type = 'text' placeholder = 'Comments...'/>
     }
 
 		return (
@@ -79,6 +79,7 @@ class RestaurantComponent extends React.Component {
                         <span style={inputStyle}>{this.props.rating}/5</span>
                     </a>
                 </Card.Content>
+                {commentBox}
                 {bttn}
             </Card>
 		);

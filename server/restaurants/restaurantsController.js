@@ -27,7 +27,7 @@ var Restaurantcntrl = {
 
         // Deleting a todo baed on an ID
         delete: function(req, res){
-          Restaurant.remove({_id: req.params.id}, function(err, Restaurants){
+          Restaurant.remove({id: req.params.id}, function(err, Restaurants){
             if(err) {
               res.json({status: false, error: "Deleting Restaurant is not successfull"});
               return;

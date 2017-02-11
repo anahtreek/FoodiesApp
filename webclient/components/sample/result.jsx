@@ -7,8 +7,8 @@ class ResultComponent extends React.Component {
         super();
     }
 
-    trigger(id, img, name, address, cuisines, rating) {
-      this.props.trigger(id, img, name, address, cuisines, rating);
+    trigger(id, img, name, address, cuisines, rating, page) {
+      this.props.trigger(id, img, name, address, cuisines, rating, page);
     }
 
     render() {
@@ -31,7 +31,7 @@ class ResultComponent extends React.Component {
                       name={item.restaurant.name}
                       address={item.restaurant.location.address}
                       cuisines={item.restaurant.cuisines}
-                      rating={item.restaurant.user_rating.aggregate_rating} 
+                      rating={item.restaurant.user_rating.aggregate_rating}
                       bvalue={bvalue}
                       bcolor={bcolor}
                       bicon={bicon}

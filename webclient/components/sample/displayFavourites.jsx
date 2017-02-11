@@ -7,20 +7,30 @@ class DisplayFavComponent  extends React.Component{
   constructor(){
     super();
   }
+
+  trigger(id, img, name, address, cuisines, rating, page) {
+    this.props.trigger(id, img, name, address, cuisines, rating, page);
+  }
+
   render(){
 
     var divStyle = {
       margin: 70
     };
     var page = this.props.page;
+    var trigger = this.trigger.bind(this);
+
     var JsonArray = this.props.json.map(function(item){
       if(page == 'favourites'){
-        return <Restaurant name={item.name}
-           img={item.img} 
+        return <Restaurant id = {item.id} 
+          name={item.name}
+           img={item.img}
            address={item.address}
            cuisines={item.cuisines}
            rating={item.rating}
-           page= 'favourites'/>
+           page= 'favourites'
+           trigger = {trigger}
+         />
       }
 
     });

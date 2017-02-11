@@ -9,8 +9,7 @@ class IndexComponent extends React.Component {
             bvalue:'',
             bcolor:'',
             bicon:'',
-            page:'',
-            trigger:''
+            page:''
         };
     }
     getResturantDataFromZomato(city, cuisine)
@@ -38,8 +37,7 @@ class IndexComponent extends React.Component {
                     bvalue:'Add to Favourites',
                     bcolor:'green',
                     bicon:'plus',
-                    page:'search',
-                  trigger:this.addToFav.bind(this)});
+                    page:'search'});
 
                 }.bind(this),
                 error: function(err) {
@@ -79,6 +77,15 @@ class IndexComponent extends React.Component {
     });
     }
 
+    deleteFromFav(id) {
+      console.log('Deleted');
+    }
+
+    trigger(id, img, name, address, cuisines, rating, page) {
+      if(page === 'search') {
+        this.addToFav(id, img, name, address, cuisines, rating);
+      }
+    }
 
     render() {
         return (
@@ -89,7 +96,7 @@ class IndexComponent extends React.Component {
                   bcolor = {this.state.bcolor}
                   bicon = {this.state.bicon}
                   page = {this.state.page}
-                trigger = {this.state.trigger}/>
+                trigger = {this.trigger.bind(this)}/>
             </div>
         );
     }
