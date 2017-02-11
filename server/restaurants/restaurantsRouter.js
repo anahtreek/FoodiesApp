@@ -22,7 +22,7 @@ const userCtrl = require('./restaurantsController');
 router . post('/add', userCtrl.post);
 router . get('/view', userCtrl.Get);
 router. delete('/delete/:id',userCtrl.delete);
-router.put('/update/:id', userCtrl.update);
+router.patch('/update/:id', userCtrl.update);
 
 
 

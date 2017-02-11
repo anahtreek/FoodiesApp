@@ -22,8 +22,7 @@ class Favourites extends React.Component{
      });
   }
 
-  trigger(id, img, name, address, cuisines, rating, page) {
-    if(page === 'favourites') {
+  del(id) {
       $.ajax({
          url:'/restaurants/delete/'+id,
          type:'DELETE',
@@ -36,14 +35,32 @@ class Favourites extends React.Component{
           console.log(err);
         }.bind(this)
        });
-    }
+  }
+
+  update(id,comments) {
+       $.ajax({
+           url: '/restaurants/update/'+id,
+           type: 'PATCH',
+           data: {
+               'comments': comments
+           },
+           success: function(data) {
+               console.log("updated");
+               this.componentWillMount();
+           }.bind(this),
+           error: function(err) {
+               console.log('error occurred on AJAX');
+               console.log(err);
+           }.bind(this)
+       });
   }
 
   render(){
-    var trigger = this.trigger.bind(this);
+    var del = this.del.bind(this);
+    var update = this.update.bind(this);
     return (
       <div>
-        <DisplayFavComponent page='favourites' json={this.state.json} trigger = {trigger}/>
+        <DisplayFavComponent page='favourites' json={this.state.json} del = {del} update = {update}/>
       </div>
     );
   }

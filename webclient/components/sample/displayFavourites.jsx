@@ -8,8 +8,12 @@ class DisplayFavComponent  extends React.Component{
     super();
   }
 
-  trigger(id, img, name, address, cuisines, rating, page) {
-    this.props.trigger(id, img, name, address, cuisines, rating, page);
+  del(id) {
+    this.props.del(id);
+  }
+
+  update(id, comments) {
+    this.props.update(id, comments);
   }
 
   render(){
@@ -18,18 +22,21 @@ class DisplayFavComponent  extends React.Component{
       margin: 70
     };
     var page = this.props.page;
-    var trigger = this.trigger.bind(this);
+    var del = this.del.bind(this);
+    var update = this.update.bind(this);
 
     var JsonArray = this.props.json.map(function(item){
       if(page == 'favourites'){
-        return <Restaurant id = {item.id} 
+        return <Restaurant id = {item._id}
           name={item.name}
            img={item.img}
            address={item.address}
            cuisines={item.cuisines}
            rating={item.rating}
+           comments={item.comments}
            page= 'favourites'
-           trigger = {trigger}
+           del = {del}
+           update = {update}
          />
       }
 

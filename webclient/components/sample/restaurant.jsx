@@ -23,35 +23,48 @@ var inputStyle = {
 class RestaurantComponent extends React.Component {
 	constructor () {
 		super();
+    this.state = {
+      comments:'',
+      bvalue:'Add',
+      bcolor:'teal',
+      bicon:'plus'
+    }
 	}
 
-  // var page = this.props.page;
-  // var buttonSet = '';
-  // if(page === 'search') {
-  //   buttonSet = <Button {this.props.bable} color = {this.props.bcolor} icon = {this.props.bicon}>{this.props.bvalue}</Button>
-  // }
-  trigger() {
-    this.props.trigger(this.props.id, this.props.img, this.props.name, this.props.address, this.props.cuisines, this.props.rating, this.props.page);
+  add() {
+    this.props.add(this.props.id, this.props.img, this.props.name, this.props.address, this.props.cuisines, this.props.rating);
   }
 
-	render () {
-    // var y = (this.props.bvalue);
-    // console.log(y+'y')
+  del() {
+    this.props.del(this.props.id)
+  }
 
-    var bvalue = this.props.bvalue;
-    var bcolor = this.props.bcolor;
-    var bicon = this.props.bicon;
+  update() {
+    this.props.update(this.props.id, this.state.comments);
+  }
+
+  onChange(event) {
+    this.setState({comments:event.target.value});
+  }
+
+
+	render () {
+
+    var add = this.add.bind(this);
+    var del = this.del.bind(this);
+    var update = this.update.bind(this);
+    var onChange = this.onChange.bind(this);
     var page = this.props.page;
-    var trigger = this.trigger.bind(this);
 
     var bttn = '';
     var commentBox = '';
     if(page === 'search') {
-      bttn = <Button bvalue = {bvalue} bcolor = {bcolor} bicon = {bicon} trigger = {trigger}></Button>
+      bttn = <Button bvalue = {this.state.bvalue} bcolor = {this.state.bcolor} bicon = {this.state.bicon} trigger = {add}></Button>
     }
     else if(page === 'favourites') {
-      bttn = <Button bvalue = 'Delete' bcolor = 'red' bicon = 'delete' trigger = {trigger}></Button>
-      commentBox = <Input type = 'text' placeholder = 'Comments...'/>
+      bttn = <div><Button bvalue = 'Delete' bcolor = 'red' bicon = 'trash' trigger = {del}></Button>
+      <Button bvalue = 'Update' bcolor = 'red' bicon = 'comment' trigger = {update}></Button></div>
+      commentBox = <Input type = 'text' placeholder = 'Comments...' value = {this.state.comments} onChange = {onChange}/>
     }
 
 		return (

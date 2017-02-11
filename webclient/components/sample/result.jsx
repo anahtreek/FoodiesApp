@@ -7,8 +7,8 @@ class ResultComponent extends React.Component {
         super();
     }
 
-    trigger(id, img, name, address, cuisines, rating, page) {
-      this.props.trigger(id, img, name, address, cuisines, rating, page);
+    add(id, img, name, address, cuisines, rating) {
+      this.props.add(id, img, name, address, cuisines, rating);
     }
 
     render() {
@@ -16,14 +16,10 @@ class ResultComponent extends React.Component {
             margin: 70
         }
 
-        var bvalue = this.props.bvalue;
-        var bcolor = this.props.bcolor;
-        var bicon = this.props.bicon;
         var page = this.props.page;
-        var trigger = this.trigger.bind(this);
+        var add = this.add.bind(this);
 
         var rst = this.props.sr.map(function(item) {
-          console.log(bvalue+'x');
             return (
                 <div>
                     <Restaurant id = {item.restaurant.id}
@@ -32,11 +28,8 @@ class ResultComponent extends React.Component {
                       address={item.restaurant.location.address}
                       cuisines={item.restaurant.cuisines}
                       rating={item.restaurant.user_rating.aggregate_rating}
-                      bvalue={bvalue}
-                      bcolor={bcolor}
-                      bicon={bicon}
                       page={page}
-                      trigger = {trigger}
+                      add = {add}
                     />
                 </div>
             );

@@ -6,9 +6,6 @@ class IndexComponent extends React.Component {
         super();
         this.state = {
             searchResult: [],
-            bvalue:'',
-            bcolor:'',
-            bicon:'',
             page:''
         };
     }
@@ -33,11 +30,7 @@ class IndexComponent extends React.Component {
                 },
                 success: function(data) {
                     console.log('Successfully got JSON from Zomato' + data.restaurants[0].restaurant.name);
-    								this.setState({searchResult: data.restaurants,
-                    bvalue:'Add to Favourites',
-                    bcolor:'green',
-                    bicon:'plus',
-                    page:'search'});
+    								this.setState({searchResult: data.restaurants, page:'search'});
 
                 }.bind(this),
                 error: function(err) {
@@ -64,7 +57,8 @@ class IndexComponent extends React.Component {
           "name":name,
           "address":address,
           "cuisines":cuisines,
-          "rating":rating
+          "rating":rating,
+          "comments": ""
         },
         success: function(data) {
           console.log(data);
@@ -77,26 +71,14 @@ class IndexComponent extends React.Component {
     });
     }
 
-    deleteFromFav(id) {
-      console.log('Deleted');
-    }
-
-    trigger(id, img, name, address, cuisines, rating, page) {
-      if(page === 'search') {
-        this.addToFav(id, img, name, address, cuisines, rating);
-      }
-    }
 
     render() {
         return (
             <div>
                 <Search search={this.getResturantDataFromZomato.bind(this)}/>
                 <Result sr = {this.state.searchResult}
-                  bvalue = {this.state.bvalue}
-                  bcolor = {this.state.bcolor}
-                  bicon = {this.state.bicon}
-                  page = {this.state.page}
-                trigger = {this.trigger.bind(this)}/>
+                page = {this.state.page}
+                add = {this.addToFav.bind(this)}/>
             </div>
         );
     }

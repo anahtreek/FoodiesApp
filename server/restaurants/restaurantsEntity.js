@@ -8,7 +8,8 @@ var schema = new mongoose.Schema({
 	name : String,
 	address : String,
 	cuisines : String,
-	rating : Number
+	rating : Number,
+	comments: String
 })
 
 var Restaurant = mongoose.model('restaurant' , schema);
