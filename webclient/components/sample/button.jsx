@@ -1,15 +1,20 @@
 import React from 'react';
-import {Button} from 'semantic-ui-react';
+import {Button, Icon} from 'semantic-ui-react';
 
-class RestaurantComponent extends React.Component {
+class ButtonComponent extends React.Component {
 	constructor () {
 		super();
 	}
   render () {
+		var bttn = <Button onClick={this.props.trigger} color={this.props.bcolor} size='large'><Icon name = {this.props.bicon}></Icon> {this.props.bvalue}</Button>
+		// if(this.props.bvalue === 'Added') {
+		// 	bttn = <Button disabled>{this.props.bvalue}</Button>
+		// }
+
 		return (
-      <Button onClick={this.onClick} size='large' primary>{this.props.value}</Button>
+			bttn
     );
 	}
 }
 
-export default RestaurantComponent;
+export default ButtonComponent;

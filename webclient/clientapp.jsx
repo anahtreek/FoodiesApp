@@ -5,6 +5,7 @@ var GmailBox = require('./components/GmailBox');
 var NavBar = require('./components/NavBar');
 var About = require('./components/About');
 var Home = require('./components/clientapp');
+var Favourites = require('./components/favourites');
 var MainComp = React.createClass({
   render:function(){
     return(
@@ -22,6 +23,7 @@ ReactDOM.render(
                 <IndexRoute component={Home}/>
                 <Route path="/about" component={About}/>
                 <Route path="/gmailbox" component={GmailBox}/>
+                <Route path="/favourites" component={Favourites}/>
               </Route>
 
   </Router>,document.getElementById('mountapp'));

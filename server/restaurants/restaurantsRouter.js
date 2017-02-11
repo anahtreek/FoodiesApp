@@ -1,37 +1,73 @@
 'use strict';
 const logger = require('./../../applogger');
 const router = require('express').Router();
-//const userCtrl = require('./userController');
+const mongoose = require( 'mongoose' );
+const Restaurant = require('./restaurantsEntity');
+const userCtrl = require('./restaurantsController');
 
-router.post('/add', function(req, res) {
-    logger.debug("Adding to fav");
-    let name = req.body.name;
-    let id = req.body.id;
-    if(typeof id === 'number')
-    res.send('Hello '+name+' your id is '+id);
-});
+// router.post('/add', function(req, res) {
+//     // logger.debug("Inside user post");
+//     var restaurant = new Restaurant(req.body);
 
-router.delete('/delete', function(req, res) {
-    logger.debug("Delete from fav");
-    let name = req.body.name;
-    let id = req.body.id;
-    if(typeof id === 'number')
-    res.send(name+' is deleted');
-});
+//     restaurant.save().then((doc)=>{
+//     console.log("insertion sucessfull", doc);
+//     res.send("insertion sucessfull");
+//     },(err)=>{
+//         console.log("failure",err);
+//         res.send("failure");
+//     });
 
-router.put('/update', function(req, res) {
-    logger.debug("Update comment");
-    let comment = req.body.comment;
-    if(!comment)
-    	res.send('Enter Comments')
-    else
-    	res.send(comment);
-});
+// });
 
-// Get details of all user in the system
-router.get('/', function(req, res) {
-  logger.debug('Inside get');
-  res.send('response from user GET route check');
-});
+router . post('/add', userCtrl.post);
+router . get('/view', userCtrl.Get);
+router. delete('/delete/:id',userCtrl.delete);
+router.put('/update/:id', userCtrl.update);
 
+
+
+// router.delete('/delete', function(req, res){
+//     // var nuser = new User(req.body);
+//     var res_id = req.body._id;
+
+//     if(isNaN(res_id) || res_id == "")
+//     {
+//         res.send("enter valid ID")
+//     }
+//     else{
+
+//         Restaurant.findById(req.body._id, function (err, restaurants) {
+//         if (err) {
+//             return console.error(err);
+//         } else {
+//             //remove it from Mongo
+//             restaurants.remove(function (err, restaurants) {
+//                 if (err) {
+//                     return console.error(err);
+//                 } else {
+//                     res.send("Deleted Successfully");
+//        }
+//    })
+//         }
+//     })
+
+//     }
+//  });
+// router.put('/update/:id', function(req,res){
+
+//    Restaurant.findById(req.params.id, function(err, restaurants) {
+//    if (err){
+//      throw console.err(err);
+//    }
+//    restaurants.comments = req.body.comments;
+//    restaurants.save(function(err) {
+//    if (err) {
+//        throw console.err(err);
+//    } else
+//    {
+//        res.send('User successfully updated!');
+//    }
+//  });
+// });
+// })
 module.exports = router;

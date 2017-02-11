@@ -5,13 +5,16 @@ class IndexComponent extends React.Component {
     constructor() {
         super();
         this.state = {
-            searchResult: []
+            searchResult: [],
+            bvalue:'',
+            bcolor:'',
+            bicon:'',
+            page:'',
+            trigger:''
         };
     }
     getResturantDataFromZomato(city, cuisine)
     {
-		console.log(city+cuisine);
-
     $.ajax({
 
         url: "https://developers.zomato.com/api/v2.1/cities?q="+city,
@@ -31,7 +34,12 @@ class IndexComponent extends React.Component {
                 },
                 success: function(data) {
                     console.log('Successfully got JSON from Zomato' + data.restaurants[0].restaurant.name);
-    								this.setState({searchResult: data.restaurants});
+    								this.setState({searchResult: data.restaurants,
+                    bvalue:'Add to Favourites',
+                    bcolor:'green',
+                    bicon:'plus',
+                    page:'search',
+                  trigger:this.addToFav.bind(this)});
 
                 }.bind(this),
                 error: function(err) {
@@ -46,13 +54,42 @@ class IndexComponent extends React.Component {
             console.log(err);
         }.bind(this)
     });
-
     }
+    addToFav(id, img, name, address, cuisines, rating) {
+      console.log('ADDDDDDDDDDDD');
+      $.ajax({
+        url: '/restaurants/add' ,
+        type: 'POST',
+        data:{
+          "id":id,
+          "img":img,
+          "name":name,
+          "address":address,
+          "cuisines":cuisines,
+          "rating":rating
+        },
+        success: function(data) {
+          console.log(data);
+            console.log('Added');
+        }.bind(this),
+        error: function(err) {
+            console.log('error');
+            console.log(err);
+        }.bind(this)
+    });
+    }
+
+
     render() {
         return (
             <div>
                 <Search search={this.getResturantDataFromZomato.bind(this)}/>
-                <Result sr = {this.state.searchResult}/>
+                <Result sr = {this.state.searchResult}
+                  bvalue = {this.state.bvalue}
+                  bcolor = {this.state.bcolor}
+                  bicon = {this.state.bicon}
+                  page = {this.state.page}
+                trigger = {this.state.trigger}/>
             </div>
         );
     }

@@ -5,26 +5,41 @@ import {Card} from 'semantic-ui-react';
 class ResultComponent extends React.Component {
     constructor() {
         super();
-				}
-				// triggerAdd() {
-				// 	this.props.add()
-				// }
+    }
+
+    trigger(id, img, name, address, cuisines, rating) {
+      this.props.trigger(id, img, name, address, cuisines, rating);
+    }
 
     render() {
         var divStyle = {
             margin: 70
         }
 
+        var bvalue = this.props.bvalue;
+        var bcolor = this.props.bcolor;
+        var bicon = this.props.bicon;
+        var page = this.props.page;
+        var trigger = this.trigger.bind(this);
+
         var rst = this.props.sr.map(function(item) {
+          console.log(bvalue+'x');
             return (
-							<div>
-							<Restaurant img={item.restaurant.featured_image}
-							name={item.restaurant.name}
-							address={item.restaurant.location.address}
-							cuisines={item.restaurant.cuisines}
-							ratings={item.restaurant.user_rating.aggregate_rating}/>
-						</div>
-						);
+                <div>
+                    <Restaurant id = {item.restaurant.id}
+                      img={item.restaurant.featured_image}
+                      name={item.restaurant.name}
+                      address={item.restaurant.location.address}
+                      cuisines={item.restaurant.cuisines}
+                      rating={item.restaurant.user_rating.aggregate_rating} 
+                      bvalue={bvalue}
+                      bcolor={bcolor}
+                      bicon={bicon}
+                      page={page}
+                      trigger = {trigger}
+                    />
+                </div>
+            );
 
         });
 
