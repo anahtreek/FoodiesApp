@@ -28,6 +28,7 @@ class ResultComponent extends React.Component {
                       address={item.restaurant.location.address}
                       cuisines={item.restaurant.cuisines}
                       rating={item.restaurant.user_rating.aggregate_rating}
+                      comments=''
                       page={page}
                       add = {add}
                     />

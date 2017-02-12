@@ -19,20 +19,21 @@ var inputStyle = {
 }
 
 
-
 class RestaurantComponent extends React.Component {
+
 	constructor () {
 		super();
     this.state = {
       comments:'',
       bvalue:'Add',
-      bcolor:'teal',
+      bcolor:'green',
       bicon:'plus'
     }
 	}
 
   add() {
     this.props.add(this.props.id, this.props.img, this.props.name, this.props.address, this.props.cuisines, this.props.rating);
+    this.setState({bvalue:'Added'})
   }
 
   del() {
@@ -62,8 +63,8 @@ class RestaurantComponent extends React.Component {
       bttn = <Button bvalue = {this.state.bvalue} bcolor = {this.state.bcolor} bicon = {this.state.bicon} trigger = {add}></Button>
     }
     else if(page === 'favourites') {
-      bttn = <div><Button bvalue = 'Delete' bcolor = 'red' bicon = 'trash' trigger = {del}></Button>
-      <Button bvalue = 'Update' bcolor = 'red' bicon = 'comment' trigger = {update}></Button></div>
+      bttn = <div><Button bvalue = 'Add Comments' bcolor = 'red' bicon = 'comment' trigger = {update}></Button>
+    <Button bcolor = 'grey' bicon = 'trash' trigger = {del}></Button></div>
       commentBox = <Input type = 'text' placeholder = 'Comments...' value = {this.state.comments} onChange = {onChange}/>
     }
 
