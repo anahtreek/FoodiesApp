@@ -1,10 +1,19 @@
-const mongoose = require('mongoose');
+var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-var scheme = new mongoose.Schema({
-  userName:String,
-  password: String
+
+var schema = new mongoose.Schema({
+    username: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    password: {
+        type: String,
+        required: true,
+        trim: true
+    }
 });
-var user = mongoose.model('user',scheme );
-module.exports = {
-	userModel: user
-};
+
+var User = mongoose.model('user', schema);
+
+module.exports = User;

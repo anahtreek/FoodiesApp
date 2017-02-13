@@ -8,33 +8,23 @@ class ResultComponent extends React.Component {
     }
 
     add(id, img, name, address, cuisines, rating) {
-      this.props.add(id, img, name, address, cuisines, rating);
+        this.props.add(id, img, name, address, cuisines, rating);
     }
 
     render() {
-        var divStyle = {
+        let divStyle = {
             margin: 70
-        }
+        };
 
-        var page = this.props.page;
-        var add = this.add.bind(this);
+        let page = this.props.page;
+        let add = this.add.bind(this);
 
-        var rst = this.props.sr.map(function(item) {
+        let rst = this.props.sr.map(function(item) {
             return (
                 <div>
-                    <Restaurant id = {item.restaurant.id}
-                      img={item.restaurant.featured_image}
-                      name={item.restaurant.name}
-                      address={item.restaurant.location.address}
-                      cuisines={item.restaurant.cuisines}
-                      rating={item.restaurant.user_rating.aggregate_rating}
-                      comments=''
-                      page={page}
-                      add = {add}
-                    />
+                    <Restaurant id={item.restaurant.id} img={item.restaurant.featured_image} name={item.restaurant.name} address={item.restaurant.location.address} cuisines={item.restaurant.cuisines} rating={item.restaurant.user_rating.aggregate_rating} page={page} add={add}/>
                 </div>
             );
-
         });
 
         return (

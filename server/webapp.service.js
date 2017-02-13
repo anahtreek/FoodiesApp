@@ -1,11 +1,11 @@
 'use strict';
-//const path = require('path');
+const path = require('path');
 
 const service = require('./service');
 
 function setupWebAppRESTRoutes(app) {
-  app.use('/users', require(path.join(__dirname, './users')));
-  return app;
+    app.use('/users', require(path.join(__dirname, './users')));
+    return app;
 }
 
 // App Constructor function is exported

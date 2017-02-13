@@ -1,55 +1,25 @@
 'use strict';
 const logger = require('./../../applogger');
 const router = require('express').Router();
-const userModel = require('./userEntity').userModel;
+const mongoose = require('mongoose');
+const User = require('./userEntity');
+const userController = require('./userController');
+const passport = require('passport');
+const Strategy = require('passport-local').Strategy;
 
-router.post('/add', function(req,res){
-  logger.debug("inside the add post");
-  let user = new userModel({
-    "userName":req.body.userName,
-    "password":req.body.password
-  })
-  user.save().then((doc)=>{
-    console.log(doc);
-    res.send('user data inserted');
-  },(err)=>{
-    console.log(err);
-    res.send('error');
+router.post('/add', userController.addUser);
 
-});
-});
+router.get('/', userController.getUser);
 
-// Get details of all users in the system
-router.get('/', function(req, res) {
-  userModel.find().then((doc)=>{
-    console.log(doc);
-    res.send(doc);
-  },(err)=>{
-    console.log(err);
-    res.send('error');
+router.delete('/delete/:id', userController.deleteUser);
 
-  });
-});
+router.put('/update/:id', userController.updateUser);
 
-router.delete('/delete/:id', function(req,res){
-  logger.debug("inside the add post");
-   let id = req.params.id;
-  userModel.findByIdAndRemove(id).then((doc)=>{
-    res.send('user of id is deleted');
-  },(err)=>{
-    console.log(err);
-    res.send('error');
+router.post('/login',passport.authenticate('local', {
+       failureFlash: 'Invalid Username and Password',
+       successFlash: "Welcome to foodie App"
+    }),userController.login);
 
-});
-});
-router.patch('/update', function(req,res){
-
-  userModel.findOneAndUpdate({ userName: 'aswini' }, { password: '123asw' }).then((doc)=>{
-    res.send('user details updated');},(err)=>{
-      consile.log(err);
-      res.send('error');
-
-  })
-});
+router.get('/logout', userController.logout);
 
 module.exports = router;

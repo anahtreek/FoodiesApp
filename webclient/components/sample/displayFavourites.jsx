@@ -1,50 +1,42 @@
 import React from 'react';
 import Restaurant from './restaurant.jsx';
-import { Card } from 'semantic-ui-react';
+import {Card} from 'semantic-ui-react';
 
-class DisplayFavComponent  extends React.Component{
+class DisplayFavComponent extends React.Component {
 
-  constructor(){
-    super();
-  }
+    constructor() {
+        super();
+    }
 
-  del(id) {
-    this.props.del(id);
-  }
+    del(id) {
+        this.props.del(id);
+    }
 
-  update(id, comments) {
-    this.props.update(id, comments);
-  }
+    update(id, comments) {
+        this.props.update(id, comments);
+    }
 
-  render(){
+    render() {
 
-    var divStyle = {
-      margin: 70
-    };
-    var page = this.props.page;
-    var del = this.del.bind(this);
-    var update = this.update.bind(this);
+        let divStyle = {
+            margin: 70
+        };
+        let page = this.props.page;
+        let del = this.del.bind(this);
+        let update = this.update.bind(this);
 
-    var JsonArray = this.props.json.map(function(item){
-      if(page == 'favourites'){
-        return <Restaurant id = {item._id}
-          name={item.name}
-           img={item.img}
-           address={item.address}
-           cuisines={item.cuisines}
-           rating={item.rating}
-           comments={item.comments}
-           page= 'favourites'
-           del = {del}
-           update = {update}
-         />
-      }
+        let JsonArray = this.props.json.map(function(item) {
+            if (page === 'favourites') {
+                return <Restaurant id={item._id} name={item.name} img={item.img} address={item.address} cuisines={item.cuisines} rating={item.rating} comments={item.comments} page='favourites' del={del} update={update}/>
+            }
 
-    });
-    return (
-        <div style={divStyle}><Card.Group>{JsonArray}</Card.Group></div>
-    );
-  }
+        });
+        return (
+            <div style={divStyle}>
+                <Card.Group>{JsonArray}</Card.Group>
+            </div>
+        );
+    }
 }
 
 module.exports = DisplayFavComponent;

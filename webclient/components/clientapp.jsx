@@ -5,7 +5,7 @@ import Component from './sample/index.jsx';
 class MainComponent extends React.Component {
     constructor() {
         super();
-        }
+    }
 
     render() {
         return (
@@ -19,4 +19,4 @@ class MainComponent extends React.Component {
 ReactDOM.render(
     <MainComponent/>, document.getElementById('mountapp'));
 
-    module.exports = MainComponent
+module.exports = MainComponent;
